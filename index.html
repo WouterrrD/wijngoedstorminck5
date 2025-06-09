@@ -87,19 +87,20 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script>
-        window.addEventListener('scroll', function() {
-            const blogs = document.getElementById('blogs');
-            const video = document.getElementById('bgVideo');
-            if (!blogs || !video) return;
-            // Bepaal de verticale positie van de blogs-sectie ten opzichte van de pagina
-            const blogsOffset = blogs.offsetTop;
-            // Kijk naar de huidige scrollpositie
-            if (window.scrollY + 10 >= blogsOffset) {
-                video.style.display = 'none';
-            } else {
-                video.style.display = '';
-            }
-        });
-        </script>
+          window.addEventListener('scroll', function() {
+              const blogs = document.getElementById('blogs');
+              const video = document.getElementById('bgVideo');
+              if (!blogs || !video) return;
+              // Bepaal de onderkant van de video en de bovenkant van de blogs-sectie
+              const videoRect = video.getBoundingClientRect();
+              const blogsRect = blogs.getBoundingClientRect();
+              // Als de bovenkant van de blogs-sectie in beeld komt, verberg de video
+              if (blogsRect.top <= 0 || window.scrollY + 10 >= blogs.offsetTop) {
+                  video.style.display = 'none';
+              } else {
+                  video.style.display = '';
+              }
+          });
+          </script>
     </body>
 </html>

@@ -16,9 +16,10 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css?v=2" rel="stylesheet" />
     </head>
+    </head>
     <body>
-        <!-- Background Video-->
-        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/mp4/Aanplanting.mp4" type="video/mp4" /></video>
+        <!-- Background Video alleen zichtbaar boven de blogs -->
+        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="bgVideo"><source src="assets/mp4/Aanplanting.mp4" type="video/mp4" /></video>
         <!-- Masthead-->
         <div class="masthead">
             <div class="masthead-content text-white">
@@ -34,18 +35,10 @@
                             <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
                         </a>
                     </div>
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
                 </div>
             </div>
         </div>
         <!-- Social Icons-->
-        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
         <div class="social-icons">
             <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
                 <a class="btn btn-dark m-3" href="https://instagram.com/wijngoedstorminck"  target="_blank"><i class="fab fa-instagram"></i></a>
@@ -53,7 +46,8 @@
                 <a class="btn btn-dark m-3" href="#!"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
-        <section id="blogs" class="py-5" style="background:rgba(255,255,255,0.95);">
+        <!-- Blogsectie met zwarte achtergrond -->
+        <section id="blogs" class="py-5" style="background:rgba(0,0,0,1);">
           <div class="container">
               <div class="row justify-content-center">
                   <div class="col-lg-8">
@@ -92,5 +86,19 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+        // Verberg de video zodra je bij de blogs bent
+        window.addEventListener('scroll', function() {
+            const blogs = document.getElementById('blogs');
+            const video = document.getElementById('bgVideo');
+            if (!blogs || !video) return;
+            const blogsTop = blogs.getBoundingClientRect().top;
+            if (blogsTop <= 0) {
+                video.style.display = 'none';
+            } else {
+                video.style.display = '';
+            }
+        });
+        </script>
     </body>
 </html>

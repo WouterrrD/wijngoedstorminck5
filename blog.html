@@ -15,11 +15,8 @@
     <link href="css/styles.css?v=2" rel="stylesheet" />
 </head>
 <body>
-    <!-- Background Image (vervangt video van home)-->
-    <div class="bg-image-wrapper">
-        <img src="assets/img/eigenaren.jpg" alt="Eigenaren Wijngoed Storminck" class="bg-image" style="width:100%;height:100vh;object-fit:cover;position:fixed;top:0;left:0;z-index:-1;">
-    </div>
     <!-- Masthead-->
+   <!-- ...existing code... -->
     <div class="masthead">
         <div class="masthead-content text-white">
             <div class="container-fluid px-4 px-lg-0">
@@ -29,14 +26,11 @@
                 <a class="btn btn-dark mb-2" href="index.html">
                     <i class="fa-solid fa-arrow-left me-2"></i>Terug naar home
                 </a>
-                <!-- Knop naar laatste blogpost -->
-                <a class="btn btn-outline-light mb-4 ms-2" href="#laatste-blog">
-                    <i class="fa-solid fa-arrow-down me-2"></i>Ga naar laatste blogpost
-                </a>
+                <!-- Knop naar laatste blogpost verwijderd -->
             </div>
         </div>
     </div>
-    <!-- Blog Posts -->
+    <!-- Blog Posts + Sidebar -->
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -53,8 +47,24 @@
                 </div>
                 <!-- Voeg hier meer blogposts toe -->
             </div>
+            <!-- Sidebar met laatste 5 blogposts -->
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="card shadow bg-light" style="border-radius: 1rem;">
+                    <div class="card-header bg-dark text-white" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                        <i class="fa-solid fa-list me-2"></i>Laatste blogs
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#laatste-blog" class="text-dark text-decoration-none">Eerste plantdag in de wijngaard</a><br><small class="text-muted">9 juni 2025</small></li>
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Voorbereidingen van de bodem</a><br><small class="text-muted">1 juni 2025</small></li>
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Kennismaking met het team</a><br><small class="text-muted">24 mei 2025</small></li>
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">De keuze van de druivenrassen</a><br><small class="text-muted">15 mei 2025</small></li>
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Start van het avontuur</a><br><small class="text-muted">1 mei 2025</small></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+<!-- ...existing code... -->
     <!-- Social Icons -->
     <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">

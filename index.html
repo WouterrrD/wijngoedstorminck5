@@ -87,13 +87,14 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script>
-        // Verberg de video zodra je bij de blogs bent
         window.addEventListener('scroll', function() {
             const blogs = document.getElementById('blogs');
             const video = document.getElementById('bgVideo');
             if (!blogs || !video) return;
-            const blogsTop = blogs.getBoundingClientRect().top;
-            if (blogsTop <= 0) {
+            // Bepaal de verticale positie van de blogs-sectie ten opzichte van de pagina
+            const blogsOffset = blogs.offsetTop;
+            // Kijk naar de huidige scrollpositie
+            if (window.scrollY + 10 >= blogsOffset) {
                 video.style.display = 'none';
             } else {
                 video.style.display = '';

@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
   <style>
     body, html {
       margin: 0; padding: 0;
@@ -21,7 +22,6 @@
       color: white;
     }
 
-    /* Container masthead + video */
     .header-video-container {
       position: relative;
       width: 100%;
@@ -29,7 +29,6 @@
       overflow: hidden;
     }
 
-    /* Video staat in container */
     video.bg-video {
       width: 100%;
       height: 100%;
@@ -42,56 +41,45 @@
       opacity: 0;
     }
 
+    /* Nieuwe masthead stijl met schuine lijn */
     .masthead {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      overflow: hidden;
     }
 
     .masthead::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 35%;
-    background: black;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    z-index: 1;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-top: 100vh solid rgba(0, 0, 0, 0.8);
+      border-left: 100vw solid transparent;
+      z-index: -1;
     }
 
     .masthead-content {
-    z-index: 2;
-    position: relative;
-    padding: 2rem;
+      z-index: 20;
+      text-align: center;
+      color: white;
     }
 
     .masthead .logo {
-    max-width: 250px;
-    margin-bottom: 2rem;
+      max-width: 300px;
+      margin-bottom: 1.5rem;
     }
 
     .masthead h1 {
-    font-size: 3rem;
-    font-family: 'Tinos', serif;
-    }
-
-    .masthead p {
-    max-width: 600px;
-    margin: 2rem auto 3rem;
-    }
-
-
-    h1 {
       font-family: 'Tinos', serif;
     }
 
-    /* Blogs sectie */
     #blogs {
       background: #111;
       padding: 4rem 1rem 6rem;
@@ -102,7 +90,6 @@
       z-index: 1;
     }
 
-    /* Blog card styling */
     #blogs .card {
       background: #222;
       border: none;
@@ -133,7 +120,6 @@
       border-color: #fff;
     }
 
-    /* Social Icons fixed aan de linkerzijde */
     .social-icons {
       position: fixed;
       top: 50%;
@@ -145,7 +131,6 @@
       z-index: 20;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .masthead .logo {
         max-width: 200px;
@@ -154,6 +139,7 @@
       #blogs {
         padding: 3rem 1rem 4rem;
       }
+
       .social-icons {
         display: none;
       }
@@ -161,6 +147,7 @@
   </style>
 </head>
 <body>
+
   <div class="header-video-container">
     <!-- Video -->
     <video class="bg-video" playsinline autoplay muted loop id="bgVideo" preload="auto">
@@ -168,22 +155,22 @@
       Your browser does not support the video tag.
     </video>
 
-    <!-- Masthead overlay -->
+    <!-- Nieuwe masthead met schuine overlay -->
     <div class="masthead">
-        <div class="masthead-content text-white">
-            <div class="container-fluid px-4 px-lg-0">
-            <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo" />
-            <h1 class="fst-normal lh-1 mb-1 mt-5">Wijngoed Storminck</h1>
-            <h1 class="fst-italic lh-1 mb-4">zit in de opstartfase</h1>
-            <p class="mb-5">
-                Momenteel zijn wij ontzettend druk met de voorbereidingen van onze wijngaard.
-                Wil je ons volgen in dit avontuur? Zorg er dan voor dat je ons volgt op de socials!
-            </p>
-            <a class="btn btn-dark btn-lg" href="#blogs">
-                <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
-            </a>
-            </div>
+      <div class="masthead-content text-white">
+        <div class="container-fluid px-4 px-lg-0">
+          <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
+          <h1 class="fst-normal lh-1 mb-1 mt-5">Wijngoed Storminck</h1>
+          <h1 class="fst-italic lh-1 mb-4">zit in de opstartfase</h1>
+          <p class="mb-5">
+            Momenteel zijn wij ontzettend druk met de voorbereidingen van onze wijngaard.
+            Wil je ons volgen in dit avontuur? Zorg er dan voor dat je ons volgt op de socials!
+          </p>
+          <a class="btn btn-dark btn-lg" href="#blogs">
+            <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
+          </a>
         </div>
+      </div>
     </div>
   </div>
 
@@ -197,70 +184,47 @@
   <!-- Blogs Section -->
   <section id="blogs" class="py-5">
     <article class="card mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Eerste plantdag in de wijngaard</h3>
-            <p class="text-muted mb-2"><i class="fa-regular fa-calendar me-1"></i>9 juni 2025</p>
-            <p class="card-text">
-            Vandaag hebben we de eerste druivenstokken geplant! Het was een prachtige dag met veel zon en hulp van vrienden en familie.
-            </p>
-            <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#blog1" role="button" aria-expanded="false" aria-controls="blog1">
-            Lees meer
-            </a>
-            <div class="collapse mt-3" id="blog1">
-            <div class="card card-body bg-dark text-light">
-                <!-- Uitgebreide blogtekst hier -->
-                We kijken uit naar de groei van onze wijngaard en delen graag onze ervaringen met jullie. Hier volgt het volledige verslag van de dag...
-
-                <!-- Bootstrap Carousel -->
-                <div id="carouselBlog1" class="carousel slide mt-4" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="assets/img/foto1.jpg" class="d-block w-100 rounded" alt="Foto 1">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="assets/img/foto2.jpg" class="d-block w-100 rounded" alt="Foto 2">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="assets/img/foto3.jpg" class="d-block w-100 rounded" alt="Foto 3">
-                    </div>
+      <div class="card-body">
+        <h3 class="card-title">Eerste plantdag in de wijngaard</h3>
+        <p class="text-muted mb-2"><i class="fa-regular fa-calendar me-1"></i>9 juni 2025</p>
+        <p class="card-text">
+          Vandaag hebben we de eerste druivenstokken geplant! Het was een prachtige dag met veel zon en hulp van vrienden en familie.
+        </p>
+        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#blog1" role="button" aria-expanded="false" aria-controls="blog1">
+          Lees meer
+        </a>
+        <div class="collapse mt-3" id="blog1">
+          <div class="card card-body bg-dark text-light">
+            We kijken uit naar de groei van onze wijngaard en delen graag onze ervaringen met jullie. Hier volgt het volledige verslag van de dag...
+            <div id="carouselBlog1" class="carousel slide mt-4" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assets/img/foto1.jpg" class="d-block w-100 rounded" alt="Foto 1">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlog1" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Vorige</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselBlog1" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="visually-hidden">Volgende</span>
-                </button>
+                <div class="carousel-item">
+                  <img src="assets/img/foto2.jpg" class="d-block w-100 rounded" alt="Foto 2">
                 </div>
-                <!-- Einde Carousel -->
+                <div class="carousel-item">
+                  <img src="assets/img/foto3.jpg" class="d-block w-100 rounded" alt="Foto 3">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlog1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Vorige</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselBlog1" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Volgende</span>
+              </button>
             </div>
-            </div>
+          </div>
         </div>
-        </article>
-    <article class="card mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Eerste plantdag in de wijngaard</h3>
-            <p class="text-muted mb-2"><i class="fa-regular fa-calendar me-1"></i>9 juni 2025</p>
-            <p class="card-text">
-            Vandaag hebben we de eerste druivenstokken geplant! Het was een prachtige dag met veel zon en hulp van vrienden en familie.
-            </p>
-            <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#blog1" role="button" aria-expanded="false" aria-controls="blog1">
-            Lees meer
-            </a>
-            <div class="collapse mt-3" id="blog1">
-            <div class="card card-body bg-dark text-light">
-                <!-- Uitgebreide blogtekst hier -->
-                We kijken uit naar de groei van onze wijngaard en delen graag onze ervaringen met jullie. Hier volgt het volledige verslag van de dag...
-            </div>
-            </div>
-        </div>
-        </article>
+      </div>
+    </article>
   </section>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
     // Fade out video zodra je bij blogs komt
     window.addEventListener('scroll', () => {
@@ -275,6 +239,5 @@
       }
     });
   </script>
-
 </body>
 </html>

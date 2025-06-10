@@ -14,46 +14,45 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    /* Algemeen */
     body, html {
-      margin: 0; padding: 0; height: 100%;
+      margin: 0; padding: 0;
       font-family: 'DM Sans', sans-serif;
       background-color: black;
       color: white;
     }
 
-    /* Video achtergrond */
-    video.bg-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
+    /* Container masthead + video */
+    .header-video-container {
+      position: relative;
+      width: 100%;
       height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      transition: opacity 1s ease;
-      pointer-events: none; /* zodat klikken niet wordt geblokkeerd */
+      overflow: hidden;
     }
 
-    /* Fade out wanneer scroll naar blogs */
+    /* Video staat in container */
+    video.bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 1s ease;
+      display: block;
+    }
+
     video.bg-video.fadeout {
       opacity: 0;
-      pointer-events: none;
     }
 
-    /* Masthead styling */
+    /* Overlay masthead (tekst/logo) boven video */
     .masthead {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
+      z-index: 10;
+      width: 100%;
       padding: 0 1rem;
-      background: transparent;
-      position: relative;
-      z-index: 1;
-    }
-
-    .masthead-content {
+      color: white;
       max-width: 720px;
     }
 
@@ -108,6 +107,18 @@
       border-color: #fff;
     }
 
+    /* Social Icons fixed aan de linkerzijde */
+    .social-icons {
+      position: fixed;
+      top: 50%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 20;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .masthead .logo {
@@ -117,20 +128,23 @@
       #blogs {
         padding: 3rem 1rem 4rem;
       }
+      .social-icons {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video class="bg-video" playsinline autoplay muted loop id="bgVideo" preload="auto">
-    <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <div class="header-video-container">
+    <!-- Video -->
+    <video class="bg-video" playsinline autoplay muted loop id="bgVideo" preload="auto">
+      <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="masthead-content">
+    <!-- Masthead overlay -->
+    <header class="masthead">
       <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
       <h1 class="fst-normal lh-1 mb-1 mt-3">Wijngoed Storminck</h1>
       <h2 class="fst-italic lh-1 mb-4">zit in de opstartfase</h2>
@@ -141,11 +155,11 @@
       <a class="btn btn-dark btn-lg" href="#blogs">
         <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
       </a>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <!-- Social Icons -->
-  <div class="social-icons position-fixed top-50 start-0 translate-middle-y ms-2 d-none d-md-flex flex-column gap-3 zindex-10">
+  <div class="social-icons d-none d-md-flex flex-column">
     <a class="btn btn-dark" href="https://instagram.com/wijngoedstorminck" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     <a class="btn btn-dark" href="https://linkedin.com/company/105002347" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
     <a class="btn btn-dark" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -164,9 +178,6 @@
         <a href="blog1.html" class="btn btn-outline-dark btn-sm">Lees meer</a>
       </div>
     </article>
-
-    <!-- Voeg hier meer blogs toe -->
-
   </section>
 
   <!-- Bootstrap JS -->
@@ -177,7 +188,7 @@
     window.addEventListener('scroll', () => {
       const video = document.getElementById('bgVideo');
       const blogs = document.getElementById('blogs');
-      const triggerPoint = blogs.offsetTop - window.innerHeight * 0.25; // start fade 25% voor blogs
+      const triggerPoint = blogs.offsetTop - window.innerHeight * 0.25;
 
       if (window.scrollY >= triggerPoint) {
         video.classList.add('fadeout');
@@ -186,5 +197,6 @@
       }
     });
   </script>
+
 </body>
 </html>

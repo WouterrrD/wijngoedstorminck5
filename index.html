@@ -1,116 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wijngoed Storminck - Blogs</title>
-  <link rel="stylesheet" href="css/styles.css?v=3" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      font-family: 'DM Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-      background-color: #000;
-    }
-
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .video-fade {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
-      z-index: 0;
-    }
-
-    .masthead {
-      padding: 6rem 2rem 3rem;
-      text-align: center;
-      background: transparent;
-      position: relative;
-      z-index: 1;
-    }
-
-    .masthead h1 {
-      font-size: 2.5rem;
-    }
-
-    .blogs-section {
-      background-color: #000;
-      padding: 4rem 2rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .blog-card {
-      background-color: #111;
-      color: #fff;
-      border-radius: 1rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-    }
-
-    .blog-card a {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    .read-more {
-      margin-top: 1rem;
-      display: inline-block;
-    }
-
-    @media (max-width: 768px) {
-      .masthead h1 {
-        font-size: 1.8rem;
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Volg de start van Wijngoed Storminck en onze wijngaard in opbouw." />
+    <meta name="author" content="Wijngoed Storminck" />
+    <title>Wijngoed Storminck - Volg onze start</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+    <!-- Core theme CSS -->
+    <link href="css/styles.css?v=2" rel="stylesheet" />
+    <style>
+      /* Video achtergrond styling */
+      .bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 1;
       }
-    }
-  </style>
-</head>
-<body>
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
-  </video>
-  <div class="video-fade"></div>
 
-  <header class="masthead">
-    <img src="assets/img/PNG-wit.png" alt="Logo" style="width: 150px;">
-    <h1>Wijngoed Storminck</h1>
-    <p>Volg onze reis in het opstarten van onze wijngaard</p>
-    <a class="btn btn-light" href="#blogs">Bekijk onze blogs</a>
-  </header>
+      /* Masthead styling */
+      .masthead {
+        position: relative;
+        z-index: 10; /* hoger dan video */
+        background: rgba(0, 0, 0, 0.6); /* semi-transparante donkere achtergrond */
+        padding: 3rem 1rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
 
-  <section id="blogs" class="blogs-section">
-    <div class="container">
-      <div class="blog-card">
-        <h2>Eerste plantdag in de wijngaard</h2>
-        <p class="text-muted"><i class="fa-regular fa-calendar me-1"></i> 9 juni 2025</p>
-        <p>Vandaag hebben we de eerste druivenstokken geplant! Het was een prachtige dag met veel zon en hulp van vrienden...</p>
-        <a href="blog-eerste-plantdag.html" class="read-more">Lees meer</a>
-      </div>
+      .masthead .logo {
+        max-width: 200px;
+        margin-bottom: 1rem;
+      }
 
-      <div class="blog-card">
-        <h2>Voorbereidingen van de bodem</h2>
-        <p class="text-muted"><i class="fa-regular fa-calendar me-1"></i> 1 juni 2025</p>
-        <p>Voor we konden planten, moest de bodem goed worden voorbereid. Dat begon met een analyse van de grond...</p>
-        <a href="blog-bodemvoorbereiding.html" class="read-more">Lees meer</a>
+      .masthead-content .container-fluid {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Responsive aanpassingen voor mobiel */
+      @media (max-width: 768px) {
+        .masthead {
+          padding: 2rem 1rem;
+        }
+        .masthead .logo {
+          max-width: 150px;
+        }
+        video.bg-video {
+          object-fit: cover;
+          height: 100vh;
+          width: 100vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Video -->
+    <video class="bg-video" playsinline autoplay muted loop id="bgVideo" preload="none">
+      <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Masthead -->
+    <div class="masthead">
+      <div class="masthead-content">
+        <div class="container-fluid">
+          <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
+          <h1 class="fst-normal lh-1 mb-1 mt-5">Wijngoed Storminck</h1>
+          <h1 class="fst-italic lh-1 mb-4">zit in de opstartfase</h1>
+          <p class="mb-5">
+            Momenteel zijn wij ontzettend druk met de voorbereidingen van onze wijngaard.
+            Wil je ons volgen in dit avontuur zorg er dan voor dat je ons volgt op de socials!
+          </p>
+          <div class="mb-4">
+            <a class="btn btn-dark btn-lg" href="#blogs">
+              <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-</body>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
+        <a class="btn btn-dark m-3" href="https://instagram.com/wijngoedstorminck" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-dark m-3" href="https://linkedin.com/company/105002347"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a class="btn btn-dark m-3" href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+
+    <!-- Overgang naar blogs -->
+    <div style="height:50px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, black 100%);"></div>
+
+    <!-- Blogsectie -->
+    <section id="blogs" class="py-5" style="background:rgba(0,0,0,1);">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card mb-4 shadow" id="laatste-blog">
+              <div class="card-body">
+                <h2 class="card-title">Eerste plantdag in de wijngaard</h2>
+                <p class="card-text text-muted mb-2"><i class="fa-regular fa-calendar me-1"></i>9 juni 2025</p>
+                <p class="card-text">
+                  Vandaag hebben we de eerste druivenstokken geplant! Het was een prachtige dag met veel zon en hulp van vrienden en familie. We kijken uit naar de groei van onze wijngaard en delen graag onze ervaringen met jullie.
+                </p>
+                <a href="#" class="btn btn-outline-dark btn-sm disabled">Lees meer</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card shadow bg-light" style="border-radius: 1rem;">
+              <div class="card-header bg-dark text-white" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                <i class="fa-solid fa-list me-2"></i>Laatste blogs
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="#laatste-blog" class="text-dark text-decoration-none">Eerste plantdag in de wijngaard</a><br /><small class="text-muted">9 juni 2025</small></li>
+                <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Voorbereidingen van de bodem</a><br /><small class="text-muted">1 juni 2025</small></li>
+                <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Kennismaking met het team</a><br /><small class="text-muted">24 mei 2025</small></li>
+                <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">De keuze van de druivenrassen</a><br /><small class="text-muted">15 mei 2025</small></li>
+                <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Start van het avontuur</a><br /><small class="text-muted">1 mei 2025</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Theme JS -->
+    <script src="js/scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("bgVideo");
+        const blogs = document.getElementById("blogs");
+
+        if (video && blogs) {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                video.style.opacity = "0";
+                setTimeout(() => {
+                  video.style.display = "none";
+                }, 500); // fade-out duration
+              } else {
+                video.style.display = "";
+                setTimeout(() => {
+                  video.style.opacity = "1";
+                }, 50);
+              }
+            },
+            {
+              root: null,
+              threshold: 0.1,
+            }
+          );
+          observer.observe(blogs);
+        }
+      });
+    </script>
+  </body>
 </html>

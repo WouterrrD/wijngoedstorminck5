@@ -42,36 +42,50 @@
       opacity: 0;
     }
 
-    /* Overlay masthead (tekst/logo) boven video */
     .masthead {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 10;
-      width: 100%;
-      padding: 0 1rem;
-      color: white;
-      max-width: 720px;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    }
+
+    .masthead::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: black;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    z-index: 1;
+    }
+
+    .masthead-content {
+    z-index: 2;
+    position: relative;
+    padding: 2rem;
     }
 
     .masthead .logo {
-      max-width: 300px;
-      margin-bottom: 1.5rem;
+    max-width: 250px;
+    margin-bottom: 2rem;
     }
 
     .masthead h1 {
-        font-size: 3rem; 
-    }
-    
-    .masthead h2 {
-        font-size: 2rem; 
+    font-size: 3rem;
+    font-family: 'Tinos', serif;
     }
 
-    .masthead h2 {
-        font-size: 1.5rem; 
+    .masthead p {
+    max-width: 600px;
+    margin: 2rem auto 3rem;
     }
+
 
     h1 {
       font-family: 'Tinos', serif;
@@ -155,18 +169,22 @@
     </video>
 
     <!-- Masthead overlay -->
-    <header class="masthead">
-      <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
-      <h1 class="fst-normal lh-1 mb-1 mt-3">Wijngoed Storminck</h1>
-      <h2 class="fst-italic lh-1 mb-4">zit in de opstartfase</h2>
-      <p class="mb-5">
-        Momenteel zijn wij ontzettend druk met de voorbereidingen van onze wijngaard.
-        Wil je ons volgen in dit avontuur? Zorg er dan voor dat je ons volgt op de socials!
-      </p>
-      <a class="btn btn-dark btn-lg" href="#blogs">
-        <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
-      </a>
-    </header>
+    <div class="masthead">
+        <div class="masthead-content text-white">
+            <div class="container-fluid px-4 px-lg-0">
+            <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo" />
+            <h1 class="fst-normal lh-1 mb-1 mt-5">Wijngoed Storminck</h1>
+            <h1 class="fst-italic lh-1 mb-4">zit in de opstartfase</h1>
+            <p class="mb-5">
+                Momenteel zijn wij ontzettend druk met de voorbereidingen van onze wijngaard.
+                Wil je ons volgen in dit avontuur? Zorg er dan voor dat je ons volgt op de socials!
+            </p>
+            <a class="btn btn-dark btn-lg" href="#blogs">
+                <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
+            </a>
+            </div>
+        </div>
+    </div>
   </div>
 
   <!-- Social Icons -->

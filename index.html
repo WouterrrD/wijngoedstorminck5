@@ -56,29 +56,28 @@
     }
 
     .masthead::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-bottom: 100vh solid rgba(0, 0, 0, 0.85); /* zwart, semi-transparant vlak */
-    border-right: 66.66vw solid transparent; /* schuine lijn loopt naar 2/3 van rechtsboven */
-    z-index: -1;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-bottom: 100vh solid rgba(0, 0, 0, 0.85); /* zwart, semi-transparant vlak */
+      border-right: 50vw solid transparent; /* schuine lijn loopt naar het midden */
+      z-index: -1;
     }
 
     /* Tekst en logo styling */
     .masthead-content {
-    z-index: 20;
-    color: white;
-    text-align: left;
-    padding-left: 5vw;
-    max-width: 50%;
+      z-index: 20;
+      color: white;
+      text-align: left;
+      padding-left: 5vw;
+      max-width: 50%;
     }
 
     .masthead .logo {
-    max-width: 250px;
-    margin-bottom: 2rem;
+      max-width: 250px;
+      margin-bottom: 2rem;
     }
-
 
     .masthead h1 {
       font-family: 'Tinos', serif;

@@ -58,10 +58,17 @@
     .masthead::before {
       content: "";
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
-      border-bottom: 100vh solid rgba(0, 0, 0, 0.85); /* zwart, semi-transparant vlak */
-      border-right: 50vw solid transparent; /* schuine lijn loopt naar het midden */
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      clip-path: polygon(
+        0% 100%,      /* linksonder */
+        66.66% 0%,    /* 2/3 bovenin */
+        100% 0%,      /* rechtsboven */
+        100% 100%     /* rechtsonder */
+      );
       z-index: -1;
     }
 

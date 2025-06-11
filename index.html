@@ -266,5 +266,25 @@
       }
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Selecteer alle "Lees meer" knoppen
+    document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(button => {
+      const targetId = button.getAttribute('href') || button.getAttribute('data-bs-target');
+      const targetElement = document.querySelector(targetId);
+
+      // Als het doel-element bestaat, voeg een event listener toe
+      if (targetElement) {
+        targetElement.addEventListener('show.bs.collapse', () => {
+          button.innerHTML = '<i class="fa-solid fa-arrow-up me-2"></i>Lees minder';
+        });
+
+        targetElement.addEventListener('hide.bs.collapse', () => {
+          button.innerHTML = '<i class="fa-solid fa-arrow-down me-2"></i>Lees meer';
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>

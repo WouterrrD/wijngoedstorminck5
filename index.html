@@ -194,7 +194,7 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      z-index: 30;
+      z-index: 20; /* lager dan content, hoger dan overlay */
       background-color: rgba(255, 255, 255, 0.1);
       color: white;
       border-radius: 50px;
@@ -222,7 +222,7 @@
     .view-toggle-button.back {
       background-color: rgba(0, 0, 0, 0.5);
     }
-
+    
   </style>
 </head>
 
@@ -236,10 +236,6 @@
 
     <!-- Nieuwe masthead met schuine overlay -->
     <div class="masthead">
-      <div id="toggleViewBtn" class="view-toggle-button">
-        <i class="fa-solid fa-eye"></i>
-        <span class="hover-text">Bekijk onze wijngaard</span>
-      </div>
       <div class="masthead-content text-white">
         <div class="container-fluid px-4 px-lg-0">
           <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
@@ -258,6 +254,10 @@
           <a class="btn btn-dark btn-lg" href="#blogs">
             <i class="fa-solid fa-arrow-down me-2"></i>Bekijk onze blogs
           </a>
+        </div>
+        <div id="toggleViewBtn" class="view-toggle-button">
+          <i class="fa-solid fa-eye"></i>
+          <span class="hover-text">Bekijk onze wijngaard</span>
         </div>
       </div>
     </div>

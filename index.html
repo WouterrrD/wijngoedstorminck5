@@ -270,7 +270,17 @@
 
 <section id="blogs" class="py-5 bg-dark text-white">
   <div class="container-fluid px-0">
-    <h2 class="text-center mb-5">Onze blogs</h2>
+    <div class="d-flex justify-content-center align-items-center mb-5 gap-3 flex-wrap">
+      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
+        &#8592; Vorige blog
+      </button>
+    
+      <h2 class="mb-0 text-white text-center">Onze blogs</h2>
+    
+      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
+        Volgende blog &#8594;
+      </button>
+    </div>
 
     <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -345,13 +355,6 @@
 
       </div>
 
-      <!-- Navigatiepijlen -->
-      <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
-        <span class="carousel-arrow-icon">&#10094;</span>
-      </button>
-      <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
-        <span class="carousel-arrow-icon">&#10095;</span>
-      </button>
     </div>
   </div>
 </section>

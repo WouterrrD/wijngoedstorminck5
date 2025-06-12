@@ -40,7 +40,23 @@
     video.bg-video.fadeout {
       opacity: 0;
     }
-
+   
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+      z-index: 5; /* tussen video (laag) en masthead (hoog) */
+    }
+    .video-overlay.active {
+      opacity: 1;
+    }
+    
     /* Nieuwe masthead stijl met schuine lijn */
     .masthead {
       position: absolute;
@@ -232,6 +248,7 @@
       <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    <div id="videoOverlay" class="video-overlay"></div>
 
     <!-- Nieuwe masthead met schuine overlay -->
     <div class="masthead">
@@ -272,13 +289,13 @@
   <div class="container-fluid px-0">
     <div class="d-flex justify-content-center align-items-center mb-5 gap-3 flex-wrap">
       <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
-        &#8592; Vorige blog
+        &#8592; Vorige
       </button>
     
       <h2 class="mb-0 text-white text-center">Onze blogs</h2>
     
       <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
-        Volgende blog &#8594;
+        Volgende &#8594;
       </button>
     </div>
 
@@ -408,14 +425,18 @@
     window.addEventListener('scroll', () => {
       const video = document.getElementById('bgVideo');
       const blogs = document.getElementById('blogs');
+      const overlay = document.getElementById('videoOverlay');
       const triggerPoint = blogs.offsetTop - window.innerHeight * 0.25;
-
+    
       if (window.scrollY >= triggerPoint) {
         video.classList.add('fadeout');
+        overlay.classList.add('active');
       } else {
         video.classList.remove('fadeout');
+        overlay.classList.remove('active');
       }
     });
+
   </script>
   <script>
   document.addEventListener('DOMContentLoaded', function () {

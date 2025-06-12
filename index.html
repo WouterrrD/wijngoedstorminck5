@@ -95,22 +95,23 @@
     }
     
     .blog-card {
-      max-width: 600px;
-      background-color: #1f1f1f;
-      color: #fff;
+      background-color: #1e1e1e;
       border-radius: 1.5rem;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-    
-    .carousel-inner {
-      display: flex;
-      justify-content: center;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+      margin: 0 auto;
+      max-width: 100%;
     }
     
     .carousel-item {
+      min-height: 100%;
       display: flex;
+      align-items: center;
       justify-content: center;
+    }
+    
+    .carousel-inner {
+      width: 100%;
     }
     
     .carousel-control-prev,
@@ -118,29 +119,27 @@
       width: auto;
       top: 50%;
       transform: translateY(-50%);
+      z-index: 2;
     }
     
     .custom-arrow {
       background: none;
       border: none;
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
     }
     
     .carousel-control-prev.custom-arrow {
-      left: 0;
+      left: 15px;
     }
     
     .carousel-control-next.custom-arrow {
-      right: 0;
+      right: 15px;
     }
     
     .carousel-arrow-icon {
       font-size: 2rem;
       color: #fff;
-      padding: 10px;
+      padding: 10px 14px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.1);
       transition: background 0.3s ease;
@@ -149,6 +148,7 @@
     .carousel-arrow-icon:hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
+
 
 
     .social-icons {
@@ -184,33 +184,11 @@
         max-width: 200px;
       }
 
-      #blogs {
-        padding: 3rem 1rem 4rem;
-      }
-
       .social-icons {
         display: none;
       }
     }
-    .carousel-inner img {
-      height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .carousel-thumbnails img {
-      cursor: pointer;
-      opacity: 0.6;
-      border: 2px solid transparent;
-      transition: opacity 0.3s, border-color 0.3s;
-    }
-
-    .carousel-thumbnails img:hover,
-    .carousel-thumbnails img.active {
-      opacity: 1;
-      border-color: #fff;
-    }
-    
+        
     .view-toggle-button {
     position: fixed;
     top: 1rem;
@@ -291,86 +269,92 @@
   </div>
 
 <section id="blogs" class="py-5 bg-dark text-white">
-  <div class="container">
-    <h2 class="mb-4">Onze blogs</h2>
+  <div class="container-fluid px-0">
+    <h2 class="text-center mb-5">Onze blogs</h2>
 
-    <div class="position-relative">
-      <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
 
-          <!-- BLOG 1 -->
-          <div class="carousel-item active">
-            <div class="blog-card mx-auto p-4 rounded-4">
-              <h3>Blogtitel 1</h3>
-              <p>
-                Introductie van de eerste blogpost. Een sterke opening die interesse wekt en uitnodigt tot lezen.
-              </p>
+        <!-- BLOG 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="blog-card w-100 px-3 px-md-5">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <h3>Blogtitel 1</h3>
+                  <p>
+                    Introductie van de eerste blogpost. Een sterke opening die interesse wekt en uitnodigt tot lezen.
+                  </p>
 
-              <!-- Galerij -->
-              <div class="row g-3">
-                <div class="col-6 col-md-4">
-                  <a href="img/blog1-a.jpg" data-bs-toggle="lightbox">
-                    <img src="img/blog1-a-thumb.jpg" class="img-fluid rounded" alt="Blog 1 foto 1">
-                  </a>
-                </div>
-                <div class="col-6 col-md-4">
-                  <a href="img/blog1-b.jpg" data-bs-toggle="lightbox">
-                    <img src="img/blog1-b-thumb.jpg" class="img-fluid rounded" alt="Blog 1 foto 2">
-                  </a>
-                </div>
-                <div class="col-6 col-md-4">
-                  <a href="img/blog1-c.jpg" data-bs-toggle="lightbox">
-                    <img src="img/blog1-c-thumb.jpg" class="img-fluid rounded" alt="Blog 1 foto 3">
-                  </a>
-                </div>
-              </div>
+                  <!-- Galerij -->
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto1.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto1.jpg" class="img-fluid rounded" alt="Blog 1 foto 1">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto2.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto2.jpg" class="img-fluid rounded" alt="Blog 1 foto 2">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto3.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto3.jpg" class="img-fluid rounded" alt="Blog 1 foto 3">
+                      </a>
+                    </div>
+                  </div>
 
-              <a href="#" class="btn btn-outline-light mt-4">Lees meer</a>
-            </div>
-          </div>
-
-          <!-- BLOG 2 -->
-          <div class="carousel-item">
-            <div class="blog-card mx-auto p-4 rounded-4">
-              <h3>Blogtitel 2</h3>
-              <p>
-                Korte tekst voor blog 2. Zet hier een samenvatting neer van wat mensen kunnen verwachten.
-              </p>
-
-              <!-- Galerij -->
-              <div class="row g-3">
-                <div class="col-6 col-md-4">
-                  <a href="img/blog2-a.jpg" data-bs-toggle="lightbox">
-                    <img src="img/blog2-a-thumb.jpg" class="img-fluid rounded" alt="Blog 2 foto 1">
-                  </a>
-                </div>
-                <div class="col-6 col-md-4">
-                  <a href="img/blog2-b.jpg" data-bs-toggle="lightbox">
-                    <img src="img/blog2-b-thumb.jpg" class="img-fluid rounded" alt="Blog 2 foto 2">
-                  </a>
+                  <a href="/blog/blog1.html" class="btn btn-outline-light">Lees meer</a>
                 </div>
               </div>
-
-              <a href="#" class="btn btn-outline-light mt-4">Lees meer</a>
             </div>
           </div>
-
-          <!-- Voeg maximaal 5 blogs toe zoals hierboven -->
-
         </div>
 
-        <!-- Navigatiepijlen -->
-        <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
-          <span class="carousel-arrow-icon">&#10094;</span>
-        </button>
-        <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
-          <span class="carousel-arrow-icon">&#10095;</span>
-        </button>
+        <!-- BLOG 2 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="blog-card w-100 px-3 px-md-5">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <h3>Blogtitel 2</h3>
+                  <p>
+                    Samenvatting van blog 2. Geef hier kort de inhoud aan en maak mensen nieuwsgierig.
+                  </p>
+
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto1.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto1.jpg" class="img-fluid rounded" alt="Blog 2 foto 1">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto2.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto2.jpg" class="img-fluid rounded" alt="Blog 2 foto 2">
+                      </a>
+                    </div>
+                  </div>
+
+                  <a href="/blog/blog2.html" class="btn btn-outline-light">Lees meer</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Navigatiepijlen -->
+      <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
+        <span class="carousel-arrow-icon">&#10094;</span>
+      </button>
+      <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
+        <span class="carousel-arrow-icon">&#10095;</span>
+      </button>
     </div>
   </div>
 </section>
-
   
   <!-- Contact Sectie -->
 <section id="contact" class="py-5 bg-dark text-white">

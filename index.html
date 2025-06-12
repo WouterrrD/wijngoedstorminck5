@@ -191,37 +191,37 @@
     }
     
     .view-toggle-button {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 30;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 50px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s;
-    font-size: 0.9rem;
-  }
-  
-  .view-toggle-button:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .view-toggle-button .hover-text {
-    display: none;
-    margin-left: 0.5rem;
-  }
-  
-  .view-toggle-button:hover .hover-text {
-    display: inline;
-  }
-  
-  .view-toggle-button.back {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 30;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+    
+    .view-toggle-button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .view-toggle-button .hover-text {
+      display: none;
+      margin-left: 0.5rem;
+    }
+    
+    .view-toggle-button:hover .hover-text {
+      display: inline;
+    }
+    
+    .view-toggle-button.back {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
   </style>
 </head>
@@ -236,6 +236,10 @@
 
     <!-- Nieuwe masthead met schuine overlay -->
     <div class="masthead">
+      <div id="toggleViewBtn" class="view-toggle-button">
+        <i class="fa-solid fa-eye"></i>
+        <span class="hover-text">Bekijk onze wijngaard</span>
+      </div>
       <div class="masthead-content text-white">
         <div class="container-fluid px-4 px-lg-0">
           <img src="assets/img/PNG-wit.png" alt="Wijngoed Storminck Logo" class="logo img-fluid" />
@@ -257,10 +261,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div id="toggleViewBtn" class="view-toggle-button">
-    <i class="fa-solid fa-eye"></i>
-    <span class="hover-text">Bekijk onze wijngaard</span>
   </div>
   <!-- Social Icons -->
   <div class="social-icons d-none d-md-flex flex-column">

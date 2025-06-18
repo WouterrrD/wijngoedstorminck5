@@ -40,23 +40,7 @@
     video.bg-video.fadeout {
       opacity: 0;
     }
-   
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease;
-      z-index: 5; /* tussen video (laag) en masthead (hoog) */
-    }
-    .video-overlay.active {
-      opacity: 1;
-    }
-    
+
     /* Nieuwe masthead stijl met schuine lijn */
     .masthead {
       position: absolute;
@@ -165,76 +149,7 @@
       background-color: rgba(255, 255, 255, 0.3);
     }
 
-    .insta-blog-section {
-      max-width: 800px;
-      margin: 60px auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      overflow: hidden;
-      position: relative;
-    }
 
-    .insta-blog-header {
-      text-align: center;
-      padding: 2rem;
-      font-size: 2rem;
-      font-weight: bold;
-      background: #000;
-      color: white;
-    }
-
-    .insta-carousel {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .insta-slides {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .insta-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      padding: 2rem;
-    }
-
-    .insta-slide iframe {
-      width: 100%;
-      height: 500px;
-      border: 0;
-      border-radius: 12px;
-    }
-
-    .insta-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-
-    .insta-nav button {
-      background: black;
-      color: white;
-      border: none;
-      padding: 0.7rem 1.2rem;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      opacity: 0.8;
-      transition: all 0.3s ease;
-    }
-
-    .insta-nav button:hover {
-      opacity: 1;
-      background: #333;
-    }
 
     .social-icons {
       position: fixed;
@@ -271,10 +186,6 @@
 
       .social-icons {
         display: none;
-      }
-
-      .insta-slide iframe {
-        height: 400px;
       }
     }
         
@@ -321,7 +232,6 @@
       <source src="assets/mp4/Aanplanting.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div id="videoOverlay" class="video-overlay"></div>
 
     <!-- Nieuwe masthead met schuine overlay -->
     <div class="masthead">
@@ -359,17 +269,92 @@
   </div>
 
 <section id="blogs" class="py-5 bg-dark text-white">
-  <div class="insta-blog-section">
-    <div class="insta-blog-header">Onze Instagram Blogs</div>
+  <div class="container-fluid px-0">
+    <div class="d-flex justify-content-center align-items-center mb-5 gap-3 flex-wrap">
+      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
+        &#8592; Vorige blog
+      </button>
+    
+      <h2 class="mb-0 text-white text-center">Onze blogs</h2>
+    
+      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
+        Volgende blog &#8594;
+      </button>
+    </div>
 
-    <div class="insta-carousel">
-      <div class="insta-slides" id="instaSlides">
-        <!-- Posts worden hier ingevoegd -->
+    <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- BLOG 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="blog-card w-100 px-3 px-md-5">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <h3>Blogtitel 1</h3>
+                  <p>
+                    Introductie van de eerste blogpost. Een sterke opening die interesse wekt en uitnodigt tot lezen.
+                  </p>
+
+                  <!-- Galerij -->
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto1.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto1.jpg" class="img-fluid rounded" alt="Blog 1 foto 1">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto2.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto2.jpg" class="img-fluid rounded" alt="Blog 1 foto 2">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto3.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto3.jpg" class="img-fluid rounded" alt="Blog 1 foto 3">
+                      </a>
+                    </div>
+                  </div>
+
+                  <a href="/blog/blog1.html" class="btn btn-outline-light">Lees meer</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOG 2 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="blog-card w-100 px-3 px-md-5">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <h3>Blogtitel 2</h3>
+                  <p>
+                    Samenvatting van blog 2. Geef hier kort de inhoud aan en maak mensen nieuwsgierig.
+                  </p>
+
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto1.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto1.jpg" class="img-fluid rounded" alt="Blog 2 foto 1">
+                      </a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <a href="assets/img/foto2.jpg" data-bs-toggle="lightbox">
+                        <img src="assets/img/foto2.jpg" class="img-fluid rounded" alt="Blog 2 foto 2">
+                      </a>
+                    </div>
+                  </div>
+
+                  <a href="/blog/blog2.html" class="btn btn-outline-light">Lees meer</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="insta-nav">
-        <button id="prevBtn">Vorige blog</button>
-        <button id="nextBtn">Volgende blog</button>
-      </div>
+
     </div>
   </div>
 </section>
@@ -423,20 +408,15 @@
     window.addEventListener('scroll', () => {
       const video = document.getElementById('bgVideo');
       const blogs = document.getElementById('blogs');
-      const overlay = document.getElementById('videoOverlay');
       const triggerPoint = blogs.offsetTop - window.innerHeight * 0.25;
-    
+
       if (window.scrollY >= triggerPoint) {
         video.classList.add('fadeout');
-        overlay.classList.add('active');
       } else {
         video.classList.remove('fadeout');
-        overlay.classList.remove('active');
       }
     });
-
   </script>
-  
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     // Selecteer alle "Lees meer" knoppen
@@ -456,71 +436,29 @@
       }
     });
   });
-  </script>
-  
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('toggleViewBtn');
-    const masthead = document.querySelector('.masthead');
-  
-    let isVideoOnly = false;
-  
-    toggleBtn.addEventListener('click', () => {
-      isVideoOnly = !isVideoOnly;
-  
-      if (isVideoOnly) {
-        masthead.style.display = 'none';
-        toggleBtn.classList.add('back');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> <span class="hover-text">Terug</span>';
-      } else {
-        masthead.style.display = 'flex';
-        toggleBtn.classList.remove('back');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> <span class="hover-text">Bekijk onze wijngaard</span>';
-      }
-    });
-  });
-  </script>
-  
-  <script>
-  const posts = [
-    "https://www.instagram.com/p/DKxiX-_N6z3/",
-    "https://www.instagram.com/p/DKed0iQClK7/",
-    "https://www.instagram.com/p/DJtA5REN0zn/"
-  ];
-  
-  const slidesContainer = document.getElementById("instaSlides");
-  let currentIndex = 0;
-  
-  const loadPosts = async () => {
-    for (const url of posts) {
-      const res = await fetch(`https://graph.facebook.com/v19.0/instagram_oembed?url=${url}&omitscript=true&access_token=1283193149844622|e7b13e2e832800d84309b508d9e1a2b5`);
-      const data = await res.json();
-  
-      const slide = document.createElement("div");
-      slide.className = "insta-slide";
-      slide.innerHTML = `<iframe srcdoc="${data.html.replace(/"/g, '&quot;')}" loading="lazy"></iframe>`;
-      slidesContainer.appendChild(slide);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleBtn = document.getElementById('toggleViewBtn');
+  const masthead = document.querySelector('.masthead');
+
+  let isVideoOnly = false;
+
+  toggleBtn.addEventListener('click', () => {
+    isVideoOnly = !isVideoOnly;
+
+    if (isVideoOnly) {
+      masthead.style.display = 'none';
+      toggleBtn.classList.add('back');
+      toggleBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> <span class="hover-text">Terug</span>';
+    } else {
+      masthead.style.display = 'flex';
+      toggleBtn.classList.remove('back');
+      toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> <span class="hover-text">Bekijk onze wijngaard</span>';
     }
-  };
-  
-  const updateSlide = () => {
-    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-  };
-  
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + posts.length) % posts.length;
-    updateSlide();
   });
-  
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % posts.length;
-    updateSlide();
-  });
-  
-  loadPosts().then(updateSlide);
-  </script>
-  
-  <script async src="//www.instagram.com/embed.js"></script>
+});
+</script>
 
 </body>
 </html>

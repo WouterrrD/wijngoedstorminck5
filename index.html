@@ -350,7 +350,7 @@
     <div class="d-flex align-items-center justify-content-center gap-3">
 
       <!-- Vorige knop -->
-      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
+      <button id="prevButton" class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
         &#8592;
       </button>
 
@@ -362,7 +362,7 @@
       </div>
 
       <!-- Volgende knop -->
-      <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
+      <button id="nextButton" class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
         &#8594;
       </button>
 
@@ -532,6 +532,33 @@
         .catch(error => console.error(`Fout bij laden van ${file}:`, error));
     });
   </script>
-
+  
+  <!-- Script voor het bijwerken van de pijlen om naar volgende of vorige blog te gaan -->
+  <script>
+    const carousel = document.getElementById('blogCarousel');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+  
+    // Functie om zichtbaarheid knoppen bij te werken
+    function updateButtonVisibility() {
+      const items = carousel.querySelectorAll('.carousel-item');
+      const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+  
+      // Verberg 'vorige' knop als eerste item actief is
+      prevButton.style.display = (activeIndex === 0) ? 'none' : 'inline-block';
+  
+      // Verberg 'volgende' knop als laatste item actief is
+      nextButton.style.display = (activeIndex === items.length - 1) ? 'none' : 'inline-block';
+    }
+  
+    // Event listener bij elke carrouselverschuiving
+    carousel.addEventListener('slid.bs.carousel', updateButtonVisibility);
+  
+    // Initialiseer na laden van blogs
+    window.addEventListener('load', () => {
+      // Geef iets tijd om blogs te laden
+      setTimeout(updateButtonVisibility, 300);
+    });
+  </script>
 </body>
 </html>

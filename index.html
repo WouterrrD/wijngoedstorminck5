@@ -511,6 +511,7 @@
       const carousel = document.getElementById('blogCarousel');
       const prevButton = document.getElementById('prevButton');
       const nextButton = document.getElementById('nextButton');
+      const indicatorsContainer = document.getElementById('carouselIndicators');
     
       function updateButtonVisibility() {
         const items = carousel.querySelectorAll('.carousel-item');
@@ -529,15 +530,20 @@
             temp.innerHTML = html.trim();
             const blogItem = temp.firstElementChild;
     
-            // Eerste item krijgt "active"
-            if (index === 0) {
-              blogItem.classList.add('active');
-            } else {
-              blogItem.classList.remove('active');
-            }
-    
+            if (index === 0) blogItem.classList.add('active');
             carouselInner.appendChild(blogItem);
     
+             // Indicator maken
+            const indicator = document.createElement('button');
+            indicator.type = 'button';
+            indicator.setAttribute('data-bs-target', '#blogCarousel');
+            indicator.setAttribute('data-bs-slide-to', index);
+            if (index === 0) indicator.classList.add('active');
+            indicator.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+            indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+      
+            indicatorsContainer.appendChild(indicator);
+            
             // Na laatste blog geladen, knoppen updaten
             if (index === blogFiles.length - 1) {
               updateButtonVisibility();

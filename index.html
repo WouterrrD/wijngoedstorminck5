@@ -349,23 +349,22 @@
 
     <div class="d-flex align-items-center justify-content-center gap-3">
 
-      <!-- Vorige knop -->
-      <button id="prevButton" class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
-        &#8592;
-      </button>
-
-      <!-- Carousel zelf -->
-      <div id="blogCarousel" class="carousel slide w-100" data-bs-ride="carousel">
-        <div class="carousel-inner" id="blog-carousel-inner">
-          <!-- JavaScript voegt hier blog-items in -->
+      <div id="blogCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+        
+        <!-- Sticky vorige navigatieknoppen -->
+        <button id="prevButton" class="btn btn-outline-light btn-sm position-absolute top-50 start-0 translate-middle-y z-3" data-bs-target="#blogCarousel" data-bs-slide="prev" aria-label="Vorige blog">
+          &#8592;
+        </button>
+      
+        <div id="blog-carousel-inner" class="carousel-inner">
+          <!-- Hier worden blogs ingeladen via JS -->
         </div>
+       
+        <!-- Sticky volgende navigatieknoppen -->
+        <button id="nextButton" class="btn btn-outline-light btn-sm position-absolute top-50 end-0 translate-middle-y z-3" data-bs-target="#blogCarousel" data-bs-slide="next" aria-label="Volgende blog">
+          &#8594;
+        </button>
       </div>
-
-      <!-- Volgende knop -->
-      <button id="nextButton" class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
-        &#8594;
-      </button>
-
     </div>
   </div>
 </section>  
@@ -458,107 +457,89 @@
   });
   </script>
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('toggleViewBtn');
-    const masthead = document.querySelector('.masthead');
-
-    let isVideoOnly = false;
-
-    toggleBtn.addEventListener('click', () => {
-      isVideoOnly = !isVideoOnly;
-
-      if (isVideoOnly) {
-        masthead.style.display = 'none';
-        toggleBtn.classList.add('back');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> <span class="hover-text">Terug</span>';
-      } else {
-        masthead.style.display = 'flex';
-        toggleBtn.classList.remove('back');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> <span class="hover-text">Bekijk onze wijngaard</span>';
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.getElementById('toggleViewBtn');
+      const masthead = document.querySelector('.masthead');
+  
+      let isVideoOnly = false;
+  
+      toggleBtn.addEventListener('click', () => {
+        isVideoOnly = !isVideoOnly;
+  
+        if (isVideoOnly) {
+          masthead.style.display = 'none';
+          toggleBtn.classList.add('back');
+          toggleBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> <span class="hover-text">Terug</span>';
+        } else {
+          masthead.style.display = 'flex';
+          toggleBtn.classList.remove('back');
+          toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> <span class="hover-text">Bekijk onze wijngaard</span>';
+        }
+      });
+    });
+    </script>
+    
+    <!-- Script voor openen van videos in blog -->
+    <script>
+      function openVideoModal(src) {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('modalVideo');
+        video.src = src;
+        modal.style.display = 'flex';
       }
-    });
-  });
-  </script>
   
-  <!-- Script voor openen van videos in blog -->
-  <script>
-    function openVideoModal(src) {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('modalVideo');
-      video.src = src;
-      modal.style.display = 'flex';
-    }
-
-    function closeVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('modalVideo');
-      video.pause();
-      video.src = '';
-      modal.style.display = 'none';
-    }
-  </script>
-  
-  <!-- Script voor openen van aparte blog pagina's -->
-  <script>
-    const blogFiles = ['blog1.html', 'blog2.html']; // Voeg meer bestanden toe hier
+      function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('modalVideo');
+        video.pause();
+        video.src = '';
+        modal.style.display = 'none';
+      }
+    </script>
+    
+    <script>
+    const blogFiles = ['blog1.html', 'blog2.html', 'blog3.html']; // Voeg hier je blogs toe
     const carouselInner = document.getElementById('blog-carousel-inner');
-  
-    blogFiles.forEach((file, index) => {
-      fetch(file)
-        .then(response => response.text())
-        .then(html => {
-          const temp = document.createElement('div');
-          temp.innerHTML = html.trim();
-  
-          // Haal het eigenlijke blog-item uit het HTML-bestand
-          const blogContent = temp.querySelector('.blog-card');
-  
-          if (!blogContent) {
-            console.warn(`Geen .blog-card gevonden in ${file}`);
-            return;
-          }
-  
-          // Maak er een Bootstrap carousel-item van
-          const carouselItem = document.createElement('div');
-          carouselItem.classList.add('carousel-item');
-          if (index === 0) {
-            carouselItem.classList.add('active');
-          }
-  
-          // Voeg de blog toe aan de carousel-item
-          carouselItem.appendChild(blogContent);
-          carouselInner.appendChild(carouselItem);
-        })
-        .catch(error => console.error(`Fout bij laden van ${file}:`, error));
-    });
-  </script>
-  
-  <!-- Script voor het bijwerken van de pijlen om naar volgende of vorige blog te gaan -->
-  <script>
     const carousel = document.getElementById('blogCarousel');
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
   
-    // Functie om zichtbaarheid knoppen bij te werken
     function updateButtonVisibility() {
       const items = carousel.querySelectorAll('.carousel-item');
       const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
   
-      // Verberg 'vorige' knop als eerste item actief is
-      prevButton.style.display = (activeIndex === 0) ? 'none' : 'inline-block';
-  
-      // Verberg 'volgende' knop als laatste item actief is
-      nextButton.style.display = (activeIndex === items.length - 1) ? 'none' : 'inline-block';
+      prevButton.style.display = activeIndex === 0 ? 'none' : 'inline-block';
+      nextButton.style.display = activeIndex === items.length - 1 ? 'none' : 'inline-block';
     }
   
-    // Event listener bij elke carrouselverschuiving
-    carousel.addEventListener('slid.bs.carousel', updateButtonVisibility);
+    // Laad blogs dynamisch in
+    blogFiles.forEach((file, index) => {
+      fetch('/blog/' + file)
+        .then(response => response.text())
+        .then(html => {
+          const temp = document.createElement('div');
+          temp.innerHTML = html.trim();
+          const blogItem = temp.firstElementChild;
   
-    // Initialiseer na laden van blogs
-    window.addEventListener('load', () => {
-      // Geef iets tijd om blogs te laden
-      setTimeout(updateButtonVisibility, 300);
+          // Eerste item krijgt "active"
+          if (index === 0) {
+            blogItem.classList.add('active');
+          } else {
+            blogItem.classList.remove('active');
+          }
+  
+          carouselInner.appendChild(blogItem);
+  
+          // Na laatste blog geladen, knoppen updaten
+          if (index === blogFiles.length - 1) {
+            updateButtonVisibility();
+          }
+        })
+        .catch(error => console.error(`Fout bij laden van ${file}:`, error));
     });
+  
+    carousel.addEventListener('slid.bs.carousel', updateButtonVisibility);
   </script>
+
 </body>
 </html>

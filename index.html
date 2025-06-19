@@ -517,10 +517,20 @@
       function updateButtonVisibility() {
         const items = carousel.querySelectorAll('.carousel-item');
         const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
-    
-        nextButton.style.display = activeIndex === 0 ? 'none' : 'inline-block';
-        prevButton.style.display = activeIndex === items.length - 1 ? 'none' : 'inline-block';
+      
+        // Eerste blog: alleen volgende zichtbaar
+        prevButton.style.display = activeIndex === 0 ? 'none' : 'inline-block';
+      
+        // Laatste blog: alleen vorige zichtbaar
+        nextButton.style.display = activeIndex === items.length - 1 ? 'none' : 'inline-block';
       }
+
+      // Activeer carousel zodat animaties en active states werken
+      const blogCarousel = new bootstrap.Carousel('#blogCarousel', {
+        interval: false,
+        wrap: false,
+        ride: false
+      });
     
       // Laad blogs dynamisch in
       blogFiles.forEach((file, index) => {

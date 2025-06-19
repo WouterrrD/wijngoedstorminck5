@@ -517,8 +517,8 @@
         const items = carousel.querySelectorAll('.carousel-item');
         const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
     
-        prevButton.style.display = activeIndex === 0 ? 'none' : 'inline-block';
-        nextButton.style.display = activeIndex === items.length - 1 ? 'none' : 'inline-block';
+        nextButton.style.display = activeIndex === 0 ? 'none' : 'inline-block';
+        prevButton.style.display = activeIndex === items.length - 1 ? 'none' : 'inline-block';
       }
     
       // Laad blogs dynamisch in

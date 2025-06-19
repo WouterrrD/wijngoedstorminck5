@@ -342,93 +342,18 @@
       <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="prev">
         &#8592; Vorige
       </button>
-    
+
       <h2 class="mb-0 text-white text-center">Onze updates</h2>
-    
+
       <button class="btn btn-outline-light btn-sm" data-bs-target="#blogCarousel" data-bs-slide="next">
         Volgende &#8594;
       </button>
     </div>
 
     <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-
-        <!-- BLOG 1 -->
-        <div class="container my-5">
-          <div class="blog-card bg-dark text-white rounded-4 shadow">
-            <div class="row g-4 align-items-center">
-
-              <!-- VIDEO -->
-              <div class="col-md-4 d-flex justify-content-center">
-                <div class="video-thumbnail" onclick="openVideoModal('assets/mp4/Post_life could be a dream.mp4')">
-                  <video muted loop playsinline>
-                    <source src="assets/mp4/Post_life could be a dream.mp4" type="video/mp4" />
-                  </video>
-                  <img src="assets/img/eigenaren.jpg" alt="Video thumbnail" class="video-thumb-img">
-                  <span class="play-button"><i class="fa-solid fa-play"></i></span>
-                </div>
-              </div>
-
-              <!-- TEKST -->
-              <div class="col-md-8">
-                <h3 class="fw-bold">Life Could Be a Dream</h3>
-                <p>
-                  December 2023.<br>
-                  <br>
-                  Een PowerPoint. Twee jeugdvrienden.<br>
-                  En drie dertigers met een droom.<br>
-                  <br>
-                  Op een gure winteravond stond ik daar — voor mijn beste vrienden uit de brugklas — met een presentatie die eigenlijk veel meer was dan een plan. <br>
-                  En toen gebeurde het.<br>
-                  <br>
-                  Geen twijfel. Geen mitsen of maren. Alleen pure energie.<br>
-                  Vanaf dat moment wisten we het zeker:<br>
-                  <br>
-                  🛠️ We gaan samen de mooiste wijngaard van Nederland bouwen.<br>
-                  🍇 Vanuit vriendschap. Vanuit passie. Vanuit de bodem omhoog.<br>
-                  ✨ Deze beelden zijn tekenend voor de afgelopen twee jaar. Ze vertellen het begin van een avontuur — en we nemen jullie graag mee!<br>
-                  </p>
-                </p>
-                <a href="#" class="btn btn-outline-light">Lees meer</a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- BLOG 2 -->
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center">
-            <div class="blog-card w-100 px-3 px-md-5">
-              <div class="row justify-content-center">
-                <div class="col-lg-8">
-                  <h3>Blogtitel 2</h3>
-                  <p>
-                    Samenvatting van blog 2. Geef hier kort de inhoud aan en maak mensen nieuwsgierig.
-                  </p>
-
-                  <div class="row g-3 mb-4">
-                    <div class="col-6 col-md-4">
-                      <a href="assets/img/foto1.jpg" data-bs-toggle="lightbox">
-                        <img src="assets/img/foto1.jpg" class="img-fluid rounded" alt="Blog 2 foto 1">
-                      </a>
-                    </div>
-                    <div class="col-6 col-md-4">
-                      <a href="assets/img/foto2.jpg" data-bs-toggle="lightbox">
-                        <img src="assets/img/foto2.jpg" class="img-fluid rounded" alt="Blog 2 foto 2">
-                      </a>
-                    </div>
-                  </div>
-
-                  <a href="/blog/blog2.html" class="btn btn-outline-light">Lees meer</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="carousel-inner" id="blog-carousel-inner">
+        <!-- Blog items worden hier geladen -->
       </div>
-
     </div>
   </div>
 </section>
@@ -560,7 +485,31 @@
       modal.style.display = 'none';
     }
   </script>
-
+  
+  <!-- Script voor openen van aparte blog pagina's -->
+  <script>
+    const blogFiles = ['blog-1.html', 'blog-2.html']; // Voeg meer bestanden toe hier
+  
+    const carouselInner = document.getElementById('blog-carousel-inner');
+  
+    blogFiles.forEach((file, index) => {
+      fetch(file)
+        .then(response => response.text())
+        .then(html => {
+          const temp = document.createElement('div');
+          temp.innerHTML = html.trim();
+          const blogItem = temp.firstChild;
+  
+          // Zorg dat alleen de eerste "active" krijgt
+          if (index !== 0 && blogItem.classList.contains('active')) {
+            blogItem.classList.remove('active');
+          }
+  
+          carouselInner.appendChild(blogItem);
+        })
+        .catch(error => console.error(`Fout bij laden van ${file}:`, error));
+    });
+  </script>
 
 
 </body>

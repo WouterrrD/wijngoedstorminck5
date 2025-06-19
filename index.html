@@ -350,15 +350,15 @@
       <div class="d-flex align-items-center justify-content-center gap-3">
   
         <div id="blogCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-          <!-- Sticky navigatieknoppen -->
-          <button id="prevButton" class="btn btn-outline-light btn-sm position-absolute top-50 start-0 translate-middle-y z-3" 
-                  data-bs-target="#blogCarousel" data-bs-slide="prev" aria-label="Vorige blog">
-            &#8592;
+          <!-- navigatieknoppen -->
+          <button id="prevButton" class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
           </button>
-        
-          <button id="nextButton" class="btn btn-outline-light btn-sm position-absolute top-50 end-0 translate-middle-y z-3" 
-                  data-bs-target="#blogCarousel" data-bs-slide="next" aria-label="Volgende blog">
-            &#8594;
+          
+          <button id="nextButton" class="carousel-control-next" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
           </button>
         
           <div id="blog-carousel-inner" class="carousel-inner">
@@ -368,7 +368,8 @@
       </div>
     </div>
   </section>  
-    
+
+  
     <!-- Contact Sectie -->
   <section id="contact" class="py-5 bg-dark text-white">
     <div class="container">

@@ -403,7 +403,7 @@
   <!-- Bootstrap 5 CSS en JS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <!-- Lightbox functie (optioneel) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
@@ -489,7 +489,6 @@
   <!-- Script voor openen van aparte blog pagina's -->
   <script>
     const blogFiles = ['blog1.html', 'blog2.html']; // Voeg meer bestanden toe hier
-  
     const carouselInner = document.getElementById('blog-carousel-inner');
   
     blogFiles.forEach((file, index) => {
@@ -498,19 +497,29 @@
         .then(html => {
           const temp = document.createElement('div');
           temp.innerHTML = html.trim();
-          const blogItem = temp.firstChild;
   
-          // Zorg dat alleen de eerste "active" krijgt
-          if (index !== 0 && blogItem.classList.contains('active')) {
-            blogItem.classList.remove('active');
+          // Haal het eigenlijke blog-item uit het HTML-bestand
+          const blogContent = temp.querySelector('.blog-card');
+  
+          if (!blogContent) {
+            console.warn(`Geen .blog-card gevonden in ${file}`);
+            return;
           }
   
-          carouselInner.appendChild(blogItem);
+          // Maak er een Bootstrap carousel-item van
+          const carouselItem = document.createElement('div');
+          carouselItem.classList.add('carousel-item');
+          if (index === 0) {
+            carouselItem.classList.add('active');
+          }
+  
+          // Voeg de blog toe aan de carousel-item
+          carouselItem.appendChild(blogContent);
+          carouselInner.appendChild(carouselItem);
         })
         .catch(error => console.error(`Fout bij laden van ${file}:`, error));
     });
   </script>
-
 
 </body>
 </html>

@@ -350,20 +350,20 @@
       <div class="d-flex align-items-center justify-content-center gap-3">
   
         <div id="blogCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-          
-          <!-- Sticky vorige navigatieknoppen -->
-          <button id="prevButton" class="btn btn-outline-light btn-sm position-absolute top-50 start-0 translate-middle-y z-3" data-bs-target="#blogCarousel" data-bs-slide="prev" aria-label="Vorige blog">
+          <!-- Sticky navigatieknoppen -->
+          <button id="prevButton" class="btn btn-outline-light btn-sm position-absolute top-50 start-0 translate-middle-y z-3" 
+                  data-bs-target="#blogCarousel" data-bs-slide="prev" aria-label="Vorige blog">
             &#8592;
+          </button>
+        
+          <button id="nextButton" class="btn btn-outline-light btn-sm position-absolute top-50 end-0 translate-middle-y z-3" 
+                  data-bs-target="#blogCarousel" data-bs-slide="next" aria-label="Volgende blog">
+            &#8594;
           </button>
         
           <div id="blog-carousel-inner" class="carousel-inner">
             <!-- Hier worden blogs ingeladen via JS -->
           </div>
-         
-          <!-- Sticky volgende navigatieknoppen -->
-          <button id="nextButton" class="btn btn-outline-light btn-sm position-absolute top-50 end-0 translate-middle-y z-3" data-bs-target="#blogCarousel" data-bs-slide="next" aria-label="Volgende blog">
-            &#8594;
-          </button>
         </div>
       </div>
     </div>
